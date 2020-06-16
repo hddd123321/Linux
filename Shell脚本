@@ -1,0 +1,105 @@
+#!/bin/bash
+
+基础
+
+创建常量
+NUM=10
+输出
+echo "$NUM"
+
+生成一个随机数
+$RANDOM
+输出一个0-9的随机整数
+echo $[$RANDOM%10]
+
+定义数组(只能一维数组)
+numbers=(1 2 3 4 5 )    用空格隔开
+echo ${numbers[0]}   第一个{}
+echo ${numbers[@/*]}   全部
+echo "${#number[@/*]}" 输出数组长度
+创建一个新的数组
+num=(0)
+
+赋值
+num[1]=100
+num[0]=500
+此时num=(500 100)
+
+删除
+unset ${num[0]}
+
+
+sh中后台执行sh  
+sh位置 &
+eg: ./test.sh >> ./aaa.txt &
+
+$0 显示执行命令 
+$n 第n个输入的参数 
+$#参数个数 
+$$ 当前进程号
+$!后台最后一个进程号
+$?最后一个执行命令的状态 0为正常
+
+echo "$(命令)"
+eg: echo "($date "+%Y-%m-%d %H:%M:%S")"
+
+read -t 10 -p "请输入第一个数" num         -t 10 等待10秒 -p 显示的数字
+echo $num 
+ 
+运算 $[运算过程]
+eg: echo $[1+2]
+变量运算
+eg: SUM=$[$SUM+$COUNT]
+
+find [路径] -mtime +10(10天以上)/-name  "*.tar.gz"(通配符) -exec rm -rf {} \; 把路径内10天以上的以tar.gz结尾文件查出并删除
+
+find  /home/myTest -mtime +10 "*.tar.gz" -exec rm -rf {} \;
+if语句 [  ]
+if [(空格) 判断语句(空格)]
+    then
+elif[ 判断语句 ]
+    then
+else
+fi
+
+eg if [ $A > $B ] 或 if [ $A -eq $B ]
+多个判断 && ||
+eg if [ $A -eq $B] && [ $A -ne $C ]
+判断数的大小
+-eq ==     -ne ！=    -lt  <     -le <=    -gt >    -ge >= 
+判断文件权限
+-r 读权限     -w 写权限     -x运行权限
+按文件的类型判断
+-f 文件存在切为常规文件
+-e 文件存在
+-d 文件存在切为目录
+
+for语句(())
+for((循环语句))
+do
+done
+例子：
+SUM=0
+for((i=0;i<$NUM;i++))
+do
+    SUM=$[$SUM+$i]
+done
+
+Case语句 
+case 变量 in
+"1")
+echo "";;
+"2")
+echo "";;
+
+While [  ]
+while[ 判断语句 ]
+do
+done
+例子：
+i=0;
+while[ i -lt 10 ]
+do
+    i = $i+1
+done
+
