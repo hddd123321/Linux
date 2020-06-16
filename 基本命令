@@ -1,0 +1,75 @@
+#时间类型
+date +"%Y-%m-%d %H:%M:%D"  显示当前时间
+cal
+
+#文件类型
+
+mkdir -p
+#创建目录（-p可创建多级目录）
+
+touch、vi、vim
+#创建文件（vi、vim可以连目录一起创建）
+
+rm -rf
+#级联删除
+
+mv 源文件 移动到的路径
+
+#移动文件
+cp 源文件 需要黏贴的路径
+#复制粘贴操作 ctrl+c，ctrl+v
+
+cat 文件名|less、more
+#分页查看文件
+
+ln -s 源文件 软连接名(默认创建在当前文件夹)
+#创建软连接（快捷方式）在/usr/local/sbin中创建软连接可用于命令
+
+head -n 10 
+#查看文件的前10行数据
+
+tail -n 10/tail -f
+#查看文件最后10行数据(-f可以动态观察【日志】文件的数据变化)
+
+find 路径 -mtime +10/name *.txt/user 
+#查找文件可以用 |grep 过滤
+
+source /etc/profile   export 变量名=变量定义全局环境变量 相当于windows的 环境变量 JAVA_HOME
+
+>、>> 文件
+把信息插入到文件>会覆盖文件 >>追加
+
+tar -zcvf 压缩包名 文件1 文件2 tar -zxvf 
+压缩、解压操作
+
+文件权限类
+chomd 744 文件名  744 读 写 运行 分别是 7 2 1
+chown -R 用户名 文件名 修改文件所有者（连目录）
+chgrp -R 组名 文件名 修改文件归属组（连目录）
+
+
+用户权限类
+
+useradd -g groupname username
+#增加新用户
+
+groupadd -g groupname
+#增加组名
+
+usermod -g groupname username
+#更改用户所在组
+
+userdel username 
+#删除用户组
+
+groupdel groupname
+#删除组
+
+gpasswd -d username groupname
+#某用户从某组中移出
+
+id username
+#显示用户信息
+
+groups
+#显示当前用户所在组
